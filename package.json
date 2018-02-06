@@ -1,0 +1,23 @@
+{
+  "name": "cssttr",
+  "version": "1.0.0",
+  "description": "Rating example makes use of Emoji from: http://emojione.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoeripasmans/cssttr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoeripasmans/cssttr/issues"
+  },
+  "homepage": "https://github.com/yoeripasmans/cssttr#readme",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1"
+  }
+}

@@ -5,7 +5,6 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-
 	<title>Living Styleguide</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="styles.css">
@@ -15,65 +14,105 @@
 <body>
 
 	<header>
+		<section>
+			<!-- Icon -->
+			<h1>Living Styleguide</h1>
 
-		<h1>Living Styleguide</h1>
-		<!-- <input type="checkbox"> -->
-		<!-- Checkbox -->
-		<input id="menu-toggle" type="checkbox" />
-
-		<!-- Hamburger -->
-		<label for="menu-toggle">
+			<!-- Checkbox & Hamburger icon -->
+			<input id="menu-toggle" type="checkbox" />
+			<label for="menu-toggle">
 			<span></span>
 			<span></span>
 			<span></span>
 		</label>
 
-		<!-- Navigation -->
-		<nav>
+			<!-- Main navigation -->
+			<nav>
 
-			<h1>Main navigation</h1>
+				<h1>Main navigation</h1>
 
-			<ul>
-				<li><a href="#main-content" aria-label="Home, current page">Home</a></li>
-				<li>
-					<a href="/products">Products</a>
+				<ul>
+					<li><a href="#main-content" aria-label="Home, current page">Home</a></li>
+					<li>
+						<a href="/products">Products</a>
 
-					<ul>
-						<li><a href="/products/rock">Rock</a></li>
-						<li><a href="/products/paper">Paper</a></li>
-						<li><a href="/products/scissors">Scissors</a></li>
-					</ul>
+						<ul>
+							<li><a href="/products/rock">Rock</a></li>
+							<li><a href="/products/paper">Paper</a></li>
+							<li><a href="/products/scissors">Scissors</a></li>
+						</ul>
 
-				</li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/contact">Contact</a></li>
-			</ul>
+					</li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
 
-		</nav>
+			</nav>
 
-		<!-- Login -->
-		<form action="/" method="post">
+			<!-- Login -->
+			<nav>
+				<input id="login-toggle" type="checkbox" />
+				<label for="login-toggle">Login</label>
+				<input id="cart-toggle" type="checkbox" />
+				<label for="cart-toggle">Cart</label>
 
-			<label for="field-email">Email</label>
-			<input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
+				<form action="/" method="post">
+					<section>
 
-			<label for="field-password">Password</label>
-			<input type="password" id="field-password" name="field-password" required>
+						<label for="login-toggle">Close</label>
 
-			<input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
-			<label for="field-stay-logged-in">Stay logged in</label>
+						<label for="field-email">Email</label>
+						<input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
 
-			<a href="/">Forgot password</a>
+						<label for="field-password">Password</label>
+						<input type="password" id="field-password" name="field-password" required>
 
-			<button type="submit">Login</button>
+						<input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
+						<label for="field-stay-logged-in">Stay logged in</label>
 
-		</form>
+						<a href="/">Forgot password</a>
 
+						<button type="submit">Login</button>
+					</section>
+				</form>
+
+				<!-- Cart -->
+
+				<nav>
+					<section>
+
+						<label for="cart-toggle">Close</label>
+
+						<h1>Finish your order</h1>
+
+						<progress value="0.25" max="1">25%</progress>
+
+						<ol>
+							<li>
+								<a href="/cart">Cart</a>
+							</li>
+							<li>
+								<a href="#main-content" aria-label="Address, current step">Address</a>
+							</li>
+							<li>
+								Payment
+							</li>
+							<li>
+								Confirm
+							</li>
+						</ol>
+					</section>
+
+				</nav>
+
+
+			</nav>
+		</section>
 	</header>
 
 	<!-- Picture -->
 	<article>
-		<h1>This picture has a title</h1>
+		<h1>The valley</h1>
 		<figure>
 			<!-- Portrait -->
 			<!-- <img src="https://vasilis.nl/voto/fotos/klein/170126170241-we-hebben-een-bortusk-1280.jpg" alt="A drawing of a colorful monster on a newspaper" /> -->

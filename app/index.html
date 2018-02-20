@@ -15,21 +15,18 @@
 
 	<header role="banner">
 		<section>
-			<!-- Icon -->
-			<h1>Online Gameshop</h1>
-
 			<!-- Checkbox & Hamburger icon -->
 			<input id="menu-toggle" type="checkbox" />
 			<label for="menu-toggle">
 			<span></span>
 			<span></span>
 			<span></span>
-		</label>
+			</label>
 
 			<!-- Main navigation -->
 			<nav>
 
-				<h1>Main navigation</h1>
+				<h1>Online gameshop</h1>
 
 				<ul>
 					<li><a href="#main-content" aria-label="Home, current page">Home</a></li>
@@ -37,9 +34,9 @@
 						<a href="/products">Products</a>
 
 						<ul>
-							<li><a href="/products/rock">Rock</a></li>
-							<li><a href="/products/paper">Paper</a></li>
-							<li><a href="/products/scissors">Scissors</a></li>
+							<li><a href="/products/rock">Games</a></li>
+							<li><a href="/products/paper">Consoles</a></li>
+							<li><a href="/products/scissors">Accessoires</a></li>
 						</ul>
 
 					</li>
@@ -47,81 +44,79 @@
 					<li><a href="/contact">Contact</a></li>
 				</ul>
 
+				<ul>
+					<!-- Login -->
+					<li>
+						<input id="login-toggle" type="checkbox" />
+						<label for="login-toggle">Login</label>
+
+
+						<form action="/" method="post">
+							<section>
+
+								<label for="login-toggle">Close</label>
+
+								<label for="field-email">Email</label>
+								<input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
+
+								<label for="field-password">Password</label>
+								<input type="password" id="field-password" name="field-password" required>
+
+								<input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
+								<label for="field-stay-logged-in">Stay logged in</label>
+
+								<a href="/">Forgot password</a>
+
+								<button type="submit">Login</button>
+							</section>
+						</form>
+					</li>
+					<!-- Cart -->
+					<li>
+						<input id="cart-toggle" type="checkbox" />
+						<label for="cart-toggle">Cart</label>
+
+						<nav>
+							<section>
+
+								<label for="cart-toggle"><input type="checkbox" id="cart-toggle-close">Close</label>
+
+								<h1>Finish your order</h1>
+
+								<progress value="0.25" max="1">25%</progress>
+
+								<ol>
+									<li>
+										<a href="/cart">Cart</a>
+									</li>
+									<li>
+										<a href="#main-content" aria-label="Address, current step">Address</a>
+									</li>
+									<li>
+										Payment
+									</li>
+									<li>
+										Confirm
+									</li>
+								</ol>
+							</section>
+
+						</nav>
+					</li>
+				</ul>
 			</nav>
 
-			<!-- Login -->
-			<nav>
-				<input id="login-toggle" type="checkbox" />
-				<label for="login-toggle">Login</label>
-				<input id="cart-toggle" type="checkbox" />
-				<label for="cart-toggle">Cart</label>
-
-				<form action="/" method="post">
-					<section>
-
-						<label for="login-toggle">Close</label>
-
-						<label for="field-email">Email</label>
-						<input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
-
-						<label for="field-password">Password</label>
-						<input type="password" id="field-password" name="field-password" required>
-
-						<input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
-						<label for="field-stay-logged-in">Stay logged in</label>
-
-						<a href="/">Forgot password</a>
-
-						<button type="submit">Login</button>
-					</section>
-				</form>
-
-				<!-- Cart -->
-
-				<nav>
-					<section>
-
-						<label for="cart-toggle">Close</label>
-
-						<h1>Finish your order</h1>
-
-						<progress value="0.25" max="1">25%</progress>
-
-						<ol>
-							<li>
-								<a href="/cart">Cart</a>
-							</li>
-							<li>
-								<a href="#main-content" aria-label="Address, current step">Address</a>
-							</li>
-							<li>
-								Payment
-							</li>
-							<li>
-								Confirm
-							</li>
-						</ol>
-					</section>
-
-				</nav>
-
-
-			</nav>
 		</section>
 	</header>
 
 	<!-- Picture -->
 	<article>
-		<h1>The gameshop</h1>
+		<h1>FIFA 18</h1>
 		<figure>
-			<!-- Portrait -->
-			<!-- <img src="https://vasilis.nl/voto/fotos/klein/170126170241-we-hebben-een-bortusk-1280.jpg" alt="A drawing of a colorful monster on a newspaper" /> -->
-
-			<!-- Landscape -->
 			<img src="img/stadion.jpg" alt="A bulldozer transporting a beach house along a sunny beach" />
 			<figcaption>
 				<p>
-					There's also this big and in depth description of the picture. You often see this on newssites or photo blogs. You could also replace the photo with a video if needed.
+					Get him now
 				</p>
 				<footer>
 					<time datetime="2017-02-06">6-2-2017</time> © 2017 <a href="https://vasilis.nl">Vasilis van Gemert</a>
@@ -168,8 +163,8 @@
 	<fieldset>
 
 		<legend>Rating</legend>
-		<div role="group-parrent">
-			<div role="group-child">
+		<section>
+			<div>
 				<input type="radio" name="rating" id="rating-0">
 				<label for="rating-0">
 			Sad!
@@ -177,7 +172,7 @@
 		</label>
 			</div>
 
-			<div role="group-child">
+			<div>
 				<input type="radio" name="rating" id="rating-1">
 				<label for="rating-1">
 			Meh
@@ -185,7 +180,7 @@
 		</label>
 			</div>
 
-			<div role="group-child">
+			<div>
 				<input type="radio" name="rating" id="rating-2">
 				<label for="rating-2">
 			Nice
@@ -193,7 +188,7 @@
 		</label>
 			</div>
 
-			<div role="group-child">
+			<div>
 				<input type="radio" name="rating" id="rating-3">
 				<label for="rating-3">
 			Fantastic!
@@ -201,12 +196,12 @@
 		</label>
 			</div>
 
-		</div>
+		</section>
 	</fieldset>
 
 
 
-
+	<script src="scripts/index.js"></script>
 </body>
 
 </html>

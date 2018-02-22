@@ -8,7 +8,7 @@ GENERAL
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 :root {
     --main-color: #e7314c;
-	--main-color-dark: #cd1833;
+    --main-color-dark: #cd1833;
     --second-color: #4153a0;
     --background-color-grey: #e6e6e6;
     --transition-ease-in-out: all 0.3s ease-in-out 0s;
@@ -175,7 +175,7 @@ header input[type=checkbox] label:hover:before {
 
 /* Navigation */
 
-@media(min-width: 30em) {
+@media(min-width: 45em) {
     header nav {
         display: flex;
         justify-content: space-between;
@@ -255,7 +255,7 @@ header input[type="checkbox"]#menu-toggle {
     z-index: 99;
 }
 
-@media (max-width: 30em) {
+@media (max-width: 45em) {
     nav[role=navigation] {
         position: absolute;
         width: 100%;
@@ -773,7 +773,6 @@ main article {
     display: flex;
     flex-direction: column;
     border: 1px solid #e6e6e6;
-
 }
 
 main article h3 {
@@ -789,7 +788,9 @@ main article h5 {
     margin-top: 0.3em;
     flex-grow: 1;
 }
+
 /* Detail view */
+
 main article div img {
     max-width: 100%;
     height: auto;
@@ -853,7 +854,7 @@ main article>input[type=checkbox] {
     border: none;
     margin: 0;
     opacity: 0;
-    z-index: 66;
+    z-index: 1;
 }
 
 main article>input[type=checkbox]:hover+label, main article>input[type=checkbox]:focus+label {
@@ -885,18 +886,33 @@ main article>div>section {
     position: relative;
     max-width: 56em;
     background-color: #fff;
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
+@media(min-width:50em){
+	main article>div>section>section {
+	    display: flex;
+	}
+
+	main article>div>section>section>div:last-of-type {
+		align-self: center;
+		margin: auto;
+	}
+}
+
 
 main article>div>section>section {
-	padding: 1.5em;
+    padding: 1.5em;
 }
 
-
 main article>div>section h1 {
-	margin-bottom: 0.6em;
-	font-weight: 700;
+    font-weight: 700;
+}
+main article>div>section p {
+    max-width: 30em;
+	line-height: 1.4;
+	margin-top: 1em;
 }
 
 main article input[type=checkbox]:checked~div {
@@ -911,12 +927,12 @@ FIELDSET
 
 fieldset {
     max-width: 20em;
-	margin-top: 2em;
+    margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
 }
 
-fieldset svg{
+fieldset svg {
     width: 4em;
 }
 
@@ -929,18 +945,18 @@ fieldset legend {
 }
 
 fieldset input {
-	display: none;
+    display: none;
 }
 
 fieldset section {
     display: flex;
-	justify-content: space-between;
+    justify-content: space-between;
 }
 
 fieldset section label {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*
@@ -949,10 +965,15 @@ CHAT
 ========================================================
 */
 
+body>section {
+    display: none;
+}
+
 @media(min-width: 50em) {
     body>section {
         position: fixed;
         z-index: 4;
+        display: block;
     }
     body>section>div {
         transform-origin: 0% 0%;
@@ -1023,9 +1044,9 @@ CHAT
         font-size: 1em;
         border-top: 1px solid #e6e6e6;
     }
-	body>section>div form textarea:focus {
-		border: 1px solid var(--main-color)
-	}
+    body>section>div form textarea:focus {
+        border: 1px solid var(--main-color)
+    }
     label[for=chat-toggle] {
         position: fixed;
         background-color: var(--main-color);
@@ -1038,23 +1059,26 @@ CHAT
         z-index: 40;
         bottom: 50%;
         right: 0;
-        transform: rotate(-90deg);
-        transform-origin: 70% 0;
-		cursor: pointer;
+        transform: rotate(-90deg) translate(-50%, 0);
+        transform-origin: 69% 0;
+        cursor: pointer;
     }
-	label[for=chat-toggle] i {
-		margin-left: 0.5em;
-	}
-	label[for=chat-toggle]:hover {
-		background-color: var(--main-color-dark)
-	}
+    label[for=chat-toggle] i {
+        margin-left: 0.5em;
+    }
+    label[for=chat-toggle]:hover {
+        background-color: var(--main-color-dark)
+    }
     input[type=checkbox]#chat-toggle {
         position: absolute;
         opacity: 0;
     }
     /* Toggled State */
-    input[type=checkbox]:checked~div {
+    input[type=checkbox]#chat-toggle:checked~div {
         transform: none;
+    }
+    main>section>input[type=checkbox]:hover+label, input[type=checkbox]#chat-toggle:focus+label[for=chat-toggle] {
+        background-color: var(--main-color-dark);
     }
 }
 
@@ -1083,6 +1107,12 @@ body>footer section ul {
     justify-content: space-between;
     width: 100%;
     padding: 0 2em;
+}
+
+@media(max-width: 30em){
+	body>footer section ul {
+	    padding: 0 1em;
+	}
 }
 
 body>footer .fa-angle-up {

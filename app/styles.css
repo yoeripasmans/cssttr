@@ -882,6 +882,11 @@ main article>div input[type=checkbox]#detail-toggle-close {
     display: none;
 }
 
+[type=checkbox]#detail-toggle-close:hover+label, [type=checkbox]#detail-toggle-close:focus+label {
+    box-shadow: 0 0 32px 12px rgba(135, 135, 135, 0.2);
+    color: var(--main-color);
+}
+
 main article>div>section {
     position: relative;
     max-width: 56em;
@@ -901,9 +906,12 @@ main article>div>section {
 	}
 }
 
+main article>div> i {
+    color: #fff;
+}
 
 main article>div>section>section {
-    padding: 1.5em;
+    padding: 2.5em;
 }
 
 main article>div>section h1 {

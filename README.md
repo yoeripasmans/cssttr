@@ -8,6 +8,10 @@ Ik ben begonnen met het bestuderen van de opdracht waaruit bleek dat ik verschil
 
 De tweede week ben ik verder gegaan met de interactie en heb verschillende componenten toegevoegd. De login en de winkelwagen componenten. Daarnaast heb ik de issues verwerkt. Daarna heb me de rest van de week volledig gefocust op de functionaliteit en layout van de pagina. De overlay op de pagina. Volgende week kan ik dan de dingen mooi gaan maken. Ten slotte de content gedeeltelijk aangepast.
 
+## Proces week 3
+
+De laatste week heb ik de grootste stappen gemaakt. Alle componenten samengevoegd en een geheel van de site gemaakt. Interacties toegevoegd met daarbij focus en hover styles op de elementen waarmee je door de site heen kan navigeren. Daarbij heb ik nieuw geleerde CSS technieken kunnen toepassen waaronder CSS grid, custom properties. Daarnaast heb ik beter inzicht gekregen in flexbox , pseudo classes, css animations, checkbox hacks, css selectoren. Dit zijn de skills die ik voor mijzelf tijdens dit project naar een hoger level heb gebracht.
+
 # License
 
 Rating example makes use of Emoji from: http://emojione.com

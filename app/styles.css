@@ -6,19 +6,21 @@ GENERAL
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@font-face {
+    font-family: Ampersand;
+    src: local('Baskerville-Italic'), local('GoudyOldStyleT-Italic'), local('Garamond-Italic'), local('Palatino-Italic');
+    unicode-range: U+26;
+}
+
 :root {
     --main-color: #e7314c;
     --main-color-dark: #cd1833;
     --second-color: #4153a0;
     --background-color-grey: #e6e6e6;
-    --transition-ease-in-out: all 0.3s ease-in-out 0s;
-    --transition-ease-out: all 0.3s ease-out;
-    --transition-ease-in: all 0.3s ease-in;
+    --transition-ease-in-out: 0.3s ease-in-out 0s;
+    --transition-ease-out: 0.3s ease-out;
+    --transition-ease-in: 0.3s ease-in;
     --transition-cubic-bezier: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-}
-
-:focus {
-    outline: none;
 }
 
 * {
@@ -31,13 +33,13 @@ html, body {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 1em;
 }
 
 h1 {
     font-size: 1.7em;
-    font-family: 'Montserrat'
+    font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
@@ -52,21 +54,27 @@ h4 {
     font-size: 1.1em
 }
 
+h5 {
+    font-family: Ampersand, 'Open Sans'
+}
+
 a {
     color: var(--second-color);
     text-decoration: none;
+    width: max-content;
 }
 
 button {
-    width: 10em;
-    height: 3em;
+    width: 13.5em;
+    height: 3.75em;
     border: none;
     font-size: 1.1em;
     color: #f3f3f3;
     background-color: var(--main-color);
     cursor: pointer;
     display: block;
-    transition: var(--transition-ease-out)
+    transition: background-color var(--transition-ease-out);
+    font-weight: 700;
 }
 
 button:hover, button:focus {
@@ -76,6 +84,36 @@ button:hover, button:focus {
 figcaption>button:hover, figcaption>button:focus {
     border: 3px solid var(--main-color);
     background-color: rgba(0, 0, 0, 0);
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 0.8s linear infinite;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-indent: 200%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.loader.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /*
@@ -91,29 +129,30 @@ body>header {
     height: 4.25em;
     width: 100%;
     z-index: 15;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .06);
 }
 
 body>header>section {
     height: 100%;
     width: 100%;
     max-width: 75em;
-    z-index: 15;
     padding: 0 1em;
     margin: auto;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
+	position: relative;
 }
 
-body>header h1 {
+body header section h1 {
     font-size: 1.1em;
     font-weight: 500;
     min-width: 9.5em;
     color: #000;
 }
 
-header h1 i {
+header>section h1 i {
     margin-right: 0.4em;
 }
 
@@ -122,7 +161,7 @@ header nav>ul li>a, header nav>ul li>label {
     text-decoration: none;
     font-weight: 500;
     color: #000;
-    transition: var(--transition-ease-in-out);
+    transition: color var(--transition-ease-in-out);
 }
 
 /* Navigation focus & hover styles */
@@ -140,7 +179,7 @@ header>section>nav>ul>li>a:before, {
     transition: var(--transition-ease-in-out);
 }
 
-header nav ul li a:hover, header nav ul li a:focus {
+header section nav ul li a:hover, header nav ul li a:focus {
     color: var(--main-color);
 }
 
@@ -150,38 +189,19 @@ header nav ul li a:hover:before, header nav ul li a:focus:before {
     transform: scaleX(1);
 }
 
-header input[type=checkbox] label:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 1.2em;
-    left: 0;
-    background-color: var(--main-color);
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: var(--transition-ease-in-out);
-}
-
-header input[type=checkbox]:focus+label, header input[type=checkbox]:hover+label {
-    color: var(--main-color);
-}
-
-header input[type=checkbox] label:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-}
-
 /* Navigation */
 
 @media(min-width: 45em) {
     header nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100%;
-        width: 100%;
+		position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 1em;
+    width: 100%;
     }
     header nav>ul {
         display: flex;
@@ -190,6 +210,9 @@ header input[type=checkbox] label:hover:before {
         position: relative;
         background-color: #fff;
     }
+	header nav>span {
+		width: 9.5em;
+	}
     header nav>ul:first-of-type {
         width: 20em;
     }
@@ -203,12 +226,10 @@ header input[type=checkbox] label:hover:before {
         align-items: center;
         position: relative;
     }
-    header nav>ul:nth-child(2)>li:nth-child(2)>a:after {
+    /* Dropdown menu */
+    header nav>ul:first-of-type>li:nth-child(2)>a:after {
         content: "\f107";
         font-family: "Font Awesome 5 Free";
-        font-style: normal;
-        font-variant-caps: normal;
-        font-variant-ligatures: normal;
         font-weight: 900;
         display: inline-block;
         height: 1em;
@@ -219,7 +240,7 @@ header input[type=checkbox] label:hover:before {
         -webkit-font-smoothing: antialiased;
         transition: transform 0.2s ease-out;
     }
-    header nav>ul:nth-child(2)>li:nth-child(2):hover>a:after, header nav>ul:nth-child(4)>li:nth-child(2)>a:focus:after {
+    header nav>ul:first-of-type>li:nth-child(2):hover>a:after, header nav>ul:first-of-type>li:nth-child(2)>a:focus:after {
         transform: rotate(-180deg) translateX(40%);
     }
     label[for=menu-toggle] {
@@ -330,11 +351,37 @@ header input[type="checkbox"]#menu-toggle {
 
 /*
 ========================================================
-LOGIN
+LOGIN & CART
 ========================================================
 */
 
-header li>form, header nav nav:last-of-type {
+/* Add animation (Chrome, Safari, Opera) */
+
+@-webkit-keyframes fade-in {
+    from {
+        top: -6.250em;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* Add animation (Standard syntax) */
+
+@keyframes fade-in {
+    from {
+        top: -6.250em;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+#login-form, #cart {
     display: none;
     width: 100%;
     height: 100%;
@@ -345,11 +392,22 @@ header li>form, header nav nav:last-of-type {
     bottom: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.5);
-    z-index: 60;
+    z-index: 20;
 }
 
-header form section, header nav section {
+#login-form:after, #cart:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#login-form section, #cart section {
     position: relative;
     max-width: 56em;
     width: 40em;
@@ -357,26 +415,42 @@ header form section, header nav section {
     flex-direction: column;
     min-height: 34em;
     padding: 4em 8em;
+    z-index: 1;
     background-color: #fff;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: 0.3s;
+    animation-name: fade-in;
+    animation-duration: 0.3s;
 }
 
-label[for=login-toggle-close], label[for=cart-toggle-close], label[for=detail-toggle-close] {
+/* Display login form */
+
+#login-form:target, #cart:target {
+    display: flex;
+}
+
+#login-form section>a:first-child, #cart section>a:first-child {
     position: absolute;
     right: 1.3em;
     top: 1.3em;
     font-size: 1.2em;
     z-index: 55;
     cursor: pointer;
+    color: #000;
 }
 
-header form h1 {
+#login-form section>a:first-child:hover, #login-form section>a:first-child:focus, #cart section>a:first-child:hover, #cart section>a:first-child:focus, #detail section>a:first-child:hover, #detail section>a:first-child:focus {
+    color: var(--main-color);
+}
+
+form h1 {
     margin-bottom: 1.3em;
     text-align: center;
     font-size: 1.6em;
     font-weight: 700;
 }
 
-header form label {
+form label {
     font-weight: 700;
 }
 
@@ -397,54 +471,64 @@ input[type=password] {
 }
 
 label[for=field-stay-logged-in] {
-    margin-top: 1.4em;
+    margin-top: 1.8em;
 }
 
-input[type=checkbox]#field-stay-logged-in {
-    opacity: 1;
-    position: static;
-    display: inline;
-    z-index: 1;
+input[type="checkbox"]#field-stay-logged-in+label::before {
+    content: '\a0';
+    vertical-align: .2em;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    border-radius: .2em;
+    background: silver;
+    text-indent: .15em;
 }
 
-header form button {
+input[type="checkbox"]#field-stay-logged-in:checked+label::before {
+    content: '\2713';
+    background: green;
+    color: #fff;
+}
+
+input[type="checkbox"]#field-stay-logged-in {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+input[type="checkbox"]#field-stay-logged-in:focus+label::before {
+    box-shadow: 0 0 .1em .1em #58a;
+}
+
+input[type="checkbox"]#field-stay-logged-in:disabled+label::before {
+    background: gray;
+    box-shadow: none;
+    color: #555;
+}
+
+#login-form button {
     margin: 2em auto 0 auto;
 }
 
-header form input:valid {
+#login-form input:valid {
     border: 1px solid green;
 }
 
-header form input:invalid {
+#login-form input:invalid {
     border: 1px solid var(--main-color);
 }
 
-header form input:focus {
+#login-form input:focus {
     transform: scale(1.02, 1.02);
 }
 
-header form section label {
-    display: block;
-}
-
-/* Display login form */
-
-header input[type=checkbox]#login-toggle:checked~form {
+#login-form section label {
     display: flex;
 }
 
-header input[type=checkbox] {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-label[for=login-toggle]:before {
+nav>ul:nth-of-type(2)>li:nth-child(1)>a:before {
     content: "\f007";
     font-family: "Font Awesome 5 Free";
-    font-style: normal;
-    font-variant-caps: normal;
-    font-variant-ligatures: normal;
     font-weight: 900;
     height: 1em;
     line-height: 1em;
@@ -454,18 +538,9 @@ label[for=login-toggle]:before {
     -webkit-font-smoothing: antialiased;
 }
 
-/*
-========================================================
-CART
-========================================================
-*/
-
-label[for=cart-toggle]:before {
+nav>ul:nth-of-type(2)>li:nth-child(2)>:before {
     content: "\f07a";
     font-family: "Font Awesome 5 Free";
-    font-style: normal;
-    font-variant-caps: normal;
-    font-variant-ligatures: normal;
     font-weight: 900;
     height: 1em;
     line-height: 1em;
@@ -475,13 +550,7 @@ label[for=cart-toggle]:before {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Display cart popup */
-
-header input[type=checkbox]#cart-toggle:checked~nav:last-child {
-    display: flex;
-}
-
-nav[role=navigation] nav h1 {
+#cart h1 {
     text-align: center;
     margin-bottom: 1.3em;
     text-align: center;
@@ -489,11 +558,11 @@ nav[role=navigation] nav h1 {
     font-weight: 700;
 }
 
-nav[role=navigation] nav form {
-    margin-top: 3em;
+#cart form {
+    margin-top: 2em;
 }
 
-nav[role=navigation] nav ol {
+#cart ol {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -531,7 +600,7 @@ progress::-webkit-progress-value {
 
 /*
 ========================================================
-BANNER
+HERO
 ========================================================
 */
 
@@ -658,6 +727,7 @@ body>article>figure>a {
     }
     body>article>figure>a:focus {
         border: 2px solid var(--main-color);
+        outline: 0;
     }
     body>article>figure>a p {
         font-size: 0.7em;
@@ -725,6 +795,11 @@ main {
     padding: 1.3em;
 }
 
+.de-emphasized {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
 main>section {
     margin-top: 3.5em;
 }
@@ -782,6 +857,16 @@ main article h3 {
     line-height: 1.2;
 }
 
+main article a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
 main article h5 {
     opacity: 0.9;
     font-weight: 300;
@@ -789,22 +874,15 @@ main article h5 {
     flex-grow: 1;
 }
 
-/* Detail view */
-
-main article div img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
 main article p {
     line-height: 1.2em;
 }
 
+/* 16:9 ratio */
+
 main article>figure {
     position: relative;
     padding-bottom: 56.25%;
-    /* 16:9 ratio */
     height: 0;
     overflow: hidden;
     z-index: -1;
@@ -817,6 +895,7 @@ main article>figure>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+		transition: transform 0.3s ease;
 }
 
 main article>section {
@@ -839,30 +918,22 @@ main article>section>section p {
     font-weight: 500;
 }
 
-main article>label {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    position: absolute;
-}
-
-main article>input[type=checkbox] {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    position: absolute;
-    border: none;
-    margin: 0;
-    opacity: 0;
-    z-index: 1;
-}
-
-main article>input[type=checkbox]:hover+label, main article>input[type=checkbox]:focus+label {
-    box-shadow: 0 0 32px 12px rgba(135, 135, 135, 0.2);
+main article a:hover:after, main article a:focus:after {
     border: 2px solid var(--main-color);
+	opacity: 0.8;
 }
 
-main article>div {
+main article:hover figure img, main article a:focus + figure img {
+    transform: scale(1.1);
+}
+
+/*
+========================================================
+DETAIL
+========================================================
+*/
+
+#detail {
     display: flex;
     visibility: hidden;
     width: 100%;
@@ -874,57 +945,87 @@ main article>div {
     bottom: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 60;
 }
 
-main article>div input[type=checkbox]#detail-toggle-close {
-    display: none;
+#detail h5 {
+    margin-top: 0.4em;
+    font-weight: 600;
+    color: #777;
 }
 
-[type=checkbox]#detail-toggle-close:hover+label, [type=checkbox]#detail-toggle-close:focus+label {
-    box-shadow: 0 0 32px 12px rgba(135, 135, 135, 0.2);
-    color: var(--main-color);
+#detail button {
+    margin-top: 2em;
 }
 
-main article>div>section {
+#detail img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (min-width: 50em) {
+    #detail img {
+        max-width: 63%;
+    }
+}
+
+#detail>section {
     position: relative;
-    max-width: 56em;
+    max-width: 65em;
+    max-height: 42em;
     background-color: #fff;
     display: flex;
     flex-direction: column;
 }
 
-@media(min-width:50em){
-	main article>div>section>section {
-	    display: flex;
-	}
-
-	main article>div>section>section>div:last-of-type {
-		align-self: center;
-		margin: auto;
-	}
+@media (min-width: 50em) {
+    #detail>section {
+        flex-direction: row;
+    }
 }
 
-main article>div> i {
+#detail a {
+    position: absolute;
+    right: 1.3em;
+    top: 1.3em;
+    font-size: 1.2em;
+    z-index: 55;
+    cursor: pointer;
+    color: #000;
+}
+
+#detail:target {
+    visibility: visible;
+}
+
+#detail>i {
     color: #fff;
 }
 
-main article>div>section>section {
+#detail>section>section {
     padding: 2.5em;
 }
 
-main article>div>section h1 {
+#detail>section h1 {
     font-weight: 700;
 }
-main article>div>section p {
+
+#detail>section p {
     max-width: 30em;
-	line-height: 1.4;
-	margin-top: 1em;
+    line-height: 1.4;
+    margin-top: 1em;
 }
 
-main article input[type=checkbox]:checked~div {
-    visibility: visible;
+@media(min-width:50em) {
+    #detail>section>section {
+        display: block;
+    }
+    #detail>section>section>div:last-of-type {
+        align-self: center;
+        margin: auto;
+    }
 }
 
 /*
@@ -941,7 +1042,13 @@ fieldset {
 }
 
 fieldset svg {
-    width: 4em;
+    width: 3em;
+    cursor: pointer;
+    transition: transform 0.15s ease-out;
+}
+
+fieldset svg:hover, fieldset svg:focus {
+    transform: scale(1.2);
 }
 
 fieldset legend {
@@ -953,12 +1060,16 @@ fieldset legend {
 }
 
 fieldset input {
-    display: none;
+	position: absolute;
+   outline: none;
+   opacity: 0;
 }
 
 fieldset section {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    padding: 0px 2em;
 }
 
 fieldset section label {
@@ -967,23 +1078,23 @@ fieldset section label {
     align-items: center;
 }
 
+input[type=radio]:focus+label svg{
+    transform: scale(1.2);
+}
+
 /*
 ========================================================
 CHAT
 ========================================================
 */
 
-body>section {
-    display: none;
+#chat, .chat-toggle {
+	display: none;
 }
 
 @media(min-width: 50em) {
-    body>section {
-        position: fixed;
-        z-index: 4;
-        display: block;
-    }
-    body>section>div {
+    #chat {
+		display: block;
         transform-origin: 0% 0%;
         transform: translate(0, 100%);
         position: fixed;
@@ -992,10 +1103,11 @@ body>section {
         bottom: 0;
         transition: var(--transition-cubic-bezier);
         z-index: 99;
-        min-width: 19em;
+        width: 19em;
         border: 1px solid #e6e6e6;
+        visibility: hidden;
     }
-    body>section>div>header {
+    #chat>header {
         width: 100%;
         height: 3em;
         position: relative;
@@ -1005,46 +1117,50 @@ body>section {
         justify-content: space-between;
         border-bottom: 1px solid #e6e6e6;
     }
-    body>section>div>header h3 {
+    #chat>header h3 {
         font-weight: 700;
         font-size: 1.2em;
     }
-    body>section>div>ol {
+    #chat>ol {
         padding: 1.2em 0.9em;
         display: flex;
         flex-direction: column;
         height: 15em;
+        background: hsl(0, 0%, 98%);
+        background-image: linear-gradient(90deg, #e6e6e6 11px, transparent 0), linear-gradient(90deg, #fbfbfb 23px, transparent 0), linear-gradient(90deg, #eaeaea 23px, transparent 0);
+        background-size: 83px 100%, 61px 100%, 41px 100%;
     }
-    body>section>div>ol li {
+    #chat>ol li {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         margin-bottom: 1.5em;
     }
-    body>section>div>ol li:nth-of-type(2) {
+    #chat>ol li:nth-of-type(2) {
         align-items: flex-start;
     }
-    body>section>div>ol li>p {
+    #chat>ol li>p {
         font-size: 1em;
         font-weight: 500;
         margin-bottom: 0.3em;
     }
-    body>section>div>ol li>footer p {
+    #chat>ol li>footer p {
         font-size: 0.7em;
         font-weight: 500;
         opacity: 0.7;
     }
-    body>section>div>ol li>footer p:last-child {
+    #chat>ol li>footer p:last-child {
         display: none;
     }
-    body>section>div form button {
+    #chat form button {
         width: 100%;
+        height: 3em;
         margin: 0;
     }
-    body>section>div form label {
+    #chat form label {
         display: none;
     }
-    body>section>div form textarea {
+    #chat form textarea {
         padding: 0.6em;
         width: 100%;
         height: 4em;
@@ -1052,10 +1168,10 @@ body>section {
         font-size: 1em;
         border-top: 1px solid #e6e6e6;
     }
-    body>section>div form textarea:focus {
+    #chat form textarea:focus {
         border: 1px solid var(--main-color)
     }
-    label[for=chat-toggle] {
+    .chat-toggle {
         position: fixed;
         background-color: var(--main-color);
         display: flex;
@@ -1071,22 +1187,12 @@ body>section {
         transform-origin: 69% 0;
         cursor: pointer;
     }
-    label[for=chat-toggle] i {
-        margin-left: 0.5em;
-    }
-    label[for=chat-toggle]:hover {
-        background-color: var(--main-color-dark)
-    }
-    input[type=checkbox]#chat-toggle {
-        position: absolute;
-        opacity: 0;
-    }
-    /* Toggled State */
-    input[type=checkbox]#chat-toggle:checked~div {
-        transform: none;
-    }
-    main>section>input[type=checkbox]:hover+label, input[type=checkbox]#chat-toggle:focus+label[for=chat-toggle] {
+    .chat-toggle:hover, .chat-toggle:focus {
         background-color: var(--main-color-dark);
+    }
+    #chat:target {
+        transform: none;
+        visibility: visible;
     }
 }
 
@@ -1117,10 +1223,10 @@ body>footer section ul {
     padding: 0 2em;
 }
 
-@media(max-width: 30em){
-	body>footer section ul {
-	    padding: 0 1em;
-	}
+@media(max-width: 30em) {
+    body>footer section ul {
+        padding: 0 1em;
+    }
 }
 
 body>footer .fa-angle-up {

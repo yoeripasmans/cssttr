@@ -12,6 +12,100 @@ De tweede week ben ik verder gegaan met de interactie en heb verschillende compo
 
 De laatste week heb ik de grootste stappen gemaakt. Alle componenten samengevoegd en een geheel van de site gemaakt. Interacties toegevoegd met daarbij focus en hover styles op de elementen waarmee je door de site heen kan navigeren. Daarbij heb ik nieuw geleerde CSS technieken kunnen toepassen waaronder CSS grid, custom properties. Daarnaast heb ik beter inzicht gekregen in flexbox , pseudo classes, css animations, checkbox hacks, css selectoren. Dit zijn de skills die ik voor mijzelf tijdens dit project naar een hoger level heb gebracht.
 
+## Herkansing
+Voor de herkansing moest ik nog dingen toevoegen uit het boek CSS Secrets by Michailia Verou. Dit hield in.
+- Fancy Ampersands toegevoegd
+
+```CSS
+@font-face {
+	font-family: Ampersand;
+	src: local('Baskerville-Italic'), local('GoudyOldStyleT-Italic'), local('Garamond-Italic'), local('Palatino-Italic');
+	unicode-range: U+26;
+}
+
+h5 {
+	font-family: Ampersand, 'Open sans', sans-serif;
+}
+```
+
+- Extending clickable area op de shop items toegevoegd.
+
+```CSS
+main article a:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+```
+
+- de-emphasize with blurring
+Check met javascript of detail pagina geopend is en geeft class mee aan de main om alles te blurren.
+```javascript
+if (this.getAttribute("href") == "#detail") {
+	main.classList.add('de-emphasized');
+} else {
+	main.classList.remove('de-emphasized');
+}
+```
+Class waarmee content geblurred wordt.
+
+```CSS
+main.de-emphasized {
+	-webkit-filter: blur(3px);
+	filter: blur(3px);
+}
+```
+
+- Loading spinner
+```css
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 0.8s linear infinite;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	z-index: 1;
+    text-indent: 200%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+```
+
+- Custom checkbox
+```css
+input[type="checkbox"]#field-stay-logged-in+label::before {
+    content: '\a0';
+    vertical-align: .2em;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    border-radius: .2em;
+    background: silver;
+    text-indent: .15em;
+}
+```
+
+``` - Random background
+
+```css
+#chat>ol {
+	padding: 1.2em 0.9em;
+	display: flex;
+	flex-direction: column;
+	height: 15em;
+	background: hsl(0, 0%, 98%);
+	background-image: linear-gradient(90deg, #e6e6e6 11px, transparent 0), linear-gradient(90deg, #fbfbfb 23px, transparent 0), linear-gradient(90deg, #eaeaea 23px, transparent 0);
+	background-size: 83px 100%, 61px 100%, 41px 100%;
+}
+```
+
 # License
 
 Rating example makes use of Emoji from: http://emojione.com
